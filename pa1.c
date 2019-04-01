@@ -53,7 +53,7 @@ enum MIPS_operations {
 	ADDI,	/* 0x8 */
 	SUB,	/* 0 0x22 */
 	LW,		/* 0x23 */
-	SB,		/* 0x2b */
+	SW,		/* 0x2b */
 	SLL,	/* 0 0x00 */
 	SLR,	/* 0 0x02 */
 	SRA,	/* 0 0x03 */
@@ -124,15 +124,15 @@ static void process_instruction(int opcode, int *operands, int nr_operands)
  * 00000028:  88 99 aa bb    � � � �
  * 0000002c:  cc dd ee ff    � � � �
  */
-static void __print_registers(void)
+static void __dump_registers(void)
 {
 	int i;
 	for (i = 0; i < sizeof(registers) / sizeof(*registers); i++) {
-		printf("[%02d] %10u 0x%08x\n", i, registers[i], registers[i]);
+		printf("[%02d] %10u  0x%08x\n", i, registers[i], registers[i]);
 	}
 }
 
-static void __print_memory(unsigned int addr, size_t length)
+static void __dump_memory(unsigned int addr, size_t length)
 {
 	int i;
 	for (i = 0; i < length; i += 4) {
@@ -167,16 +167,17 @@ static void __run_program(void)
 		/* Special cases */
 		if (opcode == 99) {
 			if (index == 1) {
-				__print_registers();
+				__dump_registers();
 			} else {
-				__print_memory(operands[0], operands[1]);
+				__dump_memory(operands[0], operands[1]);
 			}
 		} else if (index == 1) {
 			/* End of the program */
 			break;
+		} else {
+			process_instruction(opcode, operands, index - 1);
 		}
 
-		process_instruction(opcode, operands, index - 1);
 		printf("\n>> ");
 	}
 }
