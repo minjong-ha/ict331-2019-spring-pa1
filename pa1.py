@@ -65,8 +65,7 @@ registers = [
 # 0x14 + 0x18 = 0x2c. Thus registers[8] should be changed from 0 to 0x2c.
 
 def process_instruction(opcode, operands):
-    print(opcode, ": ", operands);
-
+    yield   # <-- TODO Remove this line while implementing this function
 
 #**************************************************************************
 # Simple MIPS interpreter framework
