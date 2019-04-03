@@ -5,7 +5,7 @@ ICT331 2019 Spring Programming Assignment #1
 * Description:
   - Provided code defines a bare MIPS machine with 32 32-bit registers(`registers[0]` -- `registers[31]`) and 512~KB memory (`memory[0]`--`memory[0x79999]`).
 
-  - The input is space-separated decimal numbers encoding the fields of MIPS instructions. For example, a input string "0 17 18 8 0 32" means an MIPS instruction with opcode 0 and 5 operands, which implies it is in R-format. Therefore, each field of the instruction is;
+  - The input is space-separated decimal numbers encoding the fields of MIPS instructions. For example, a input string `0 17 18 8 0 32` means an MIPS instruction with opcode 0 and 5 operands, which implies it is in R-format. Therefore, each field of the instruction is;
   
 		- opcode: 0, funct: 32 (add)
 		- rs: 17
@@ -14,6 +14,15 @@ ICT331 2019 Spring Programming Assignment #1
 		- shamt: 0
 
   - Thus, your interpreter should add values in register 17 and 18, which is 0x14 and 0x18 initially, and store the result (0x2c) into register 8.
+  
+  - Another example is `43 16 8 -8`, which is in I-format. Accordingly,
+  
+  		- opcode: 43 (==0x2b, sw)
+		- rs : 16
+		- rt : 8
+		- immediate: -8
+		
+  - Thus, the interpreter stores the value in register 8 (rt) on the memory whose address is calculated by subtracting 8 from the value in register 16.
 
   - The interpreter should be able to process following operations for full points. Note the number in /* */ indicates the opcode (and funct).
 
