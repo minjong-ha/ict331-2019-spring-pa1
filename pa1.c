@@ -55,8 +55,8 @@ enum MIPS_operations {
 	LW,		/* 0x23 */
 	SW,		/* 0x2b */
 	SLL,	/* 0 0x00 */
-	SLR,	/* 0 0x02 */
-	SRA,	/* 0 0x03 */
+	SRL,	/* 0 0x02 Should extend with zeros */
+	SRA,	/* 0 0x03 Should extend the sign bit */
 	AND,	/* 0 0x21 */
 	ANDI,	/* 0x0c */
 	OR,		/* 0 0x25 */
@@ -185,7 +185,7 @@ static void __run_program(void)
 int main(int argc, const char *argv[])
 {
 	printf("*********************************************************\n");
-	printf("*            >> ICT331 MIPS interpreter v0.01 <<        *\n");
+	printf("*            >> ICT331 MIPS interpreter v0.02 <<        *\n");
 	printf("*                                                       *\n");
 	printf("*                                       .--.            *\n");
 	printf("*                           .--------.  |__|            *\n");

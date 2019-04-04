@@ -1,4 +1,4 @@
-ICT331 2019 Spring Programming Assignment #1
+# ICT331 2019 Spring Programming Assignment #1
 
 * Goal: Implement a simple MIPS interpreter.
 
@@ -32,8 +32,8 @@ ICT331 2019 Spring Programming Assignment #1
 		- LW,   /* 0x23   */
 		- SW,   /* 0x2b   */
 		- SLL,  /* 0 0x00 */
-		- SLR,  /* 0 0x02 */
-		- SRA,  /* 0 0x03 */
+		- SRL,  /* 0 0x02 Should extend with zeros */
+		- SRA,  /* 0 0x03 should extend the sign bit */
 		- AND,  /* 0 0x21 */
 		- ANDI, /* 0x0c   */
 		- OR,   /* 0 0x25 */
